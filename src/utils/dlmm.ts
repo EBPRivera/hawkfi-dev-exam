@@ -6,6 +6,16 @@ export function getBinIdFromPrice(
   binStep: number,
   min: boolean
 ): number {
-  console.log("Getting bin id from price...");
-  return 0;
+  const binStepNum = new Decimal(binStep).div(new Decimal(BASIS_POINT_MAX));
+  const binId = new Decimal(price)
+    .log()
+    .dividedBy(new Decimal(1).add(binStepNum).log());
+  return (min ? binId.floor() : binId.ceil()).toNumber();
+}
+
+export function getBinCountBetweenMinAndMaxPrice(minPrice: number, maxPrice: number, binStep: number): number {
+  const lowerBinId = getBinIdFromPrice(minPrice, binStep, true)
+  const upperBinId = getBinIdFromPrice(maxPrice, binStep, false)
+
+  return upperBinId - lowerBinId + 1
 }

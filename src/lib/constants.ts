@@ -1,6 +1,6 @@
 export const BASIS_POINT_MAX = 10000;
 // Mock token data - in a real app, this would come from an API
-const MOCK_TOKENS = [
+export const MOCK_TOKENS = [
   {
     address: "So11111111111111111111111111111111111111112",
     symbol: "SOL",
@@ -33,6 +33,15 @@ const MOCK_TOKENS = [
 
 export const DEFAULT_QUOTE_TOKEN = MOCK_TOKENS[0];
 
+export const MOCK_SOLANA_ADRESSES: string[] = [
+  "H2UjFR5S8Jkn6HGZmtkN3ku2FFiQyCeW6hawgo8M3XdL",
+  "a2wrT2WndE65R5a5eDefnehk8JLMdpbjyM6Ds7tzNMx",
+  "EyoRXh1sQNjPaXf3KGBszMCJCv1Lt2nzYoEG4T53WUHb",
+  "23uCg5eZvrLY3tR5cXBZwEXuUAUryxvr4XxroHPdgoVM",
+  "HodxZmtjw7wAD2eFS447NJ48oFJ2VgTEyCe2yZR1Qj3J",
+  "mockvalidsolanaaddress"
+]
+
 export const BASE_FEE_OPTIONS = [
   { value: 0.01, label: "0.01%" },
   { value: 0.05, label: "0.05%" },
@@ -55,6 +64,7 @@ export const POSITION_PRESETS = [
     id: 1,
     code: "HFI-001",
     name: "High Frequency Liquidity (HFL)",
+    label: "High Frequency Liquidity (HFL)",
     upperPercentage: 0.5,
     lowerPercentage: 0.5,
     solAmount: 1,
@@ -63,6 +73,7 @@ export const POSITION_PRESETS = [
     id: 2,
     code: "HFI-002",
     name: "High Frequency Liquidity (HFL) Turbo",
+    label: "High Frequency Liquidity (HFL) Turbo",
     upperPercentage: 0.25,
     lowerPercentage: 0.25,
     solAmount: 2,
@@ -71,6 +82,7 @@ export const POSITION_PRESETS = [
     id: 3,
     code: "HFI-004",
     name: "Multiday Cook Up (MCU)",
+    label: "Multiday Cook Up (MCU)",
     upperPercentage: 15,
     lowerPercentage: 15,
     solAmount: 5,
@@ -79,6 +91,7 @@ export const POSITION_PRESETS = [
     id: 4,
     code: "HFI-005",
     name: "TGE Sniper",
+    label: "TGE Sniper",
     upperPercentage: 5,
     lowerPercentage: 5,
     solAmount: 0.5,
