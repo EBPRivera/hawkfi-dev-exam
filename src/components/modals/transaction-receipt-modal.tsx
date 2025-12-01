@@ -42,7 +42,7 @@ export default function TransactionReceiptModal(
           <Typography variant="h5" align="center">Position</Typography>
           <Typography variant="caption">to: {fields.positionAddress}</Typography>
         </Stack>
-        <TransactionReceiptItem title="Deposit Amount" value={fields.depositAmount} error={errors.depositAmount} />
+        <TransactionReceiptItem title="Deposit Amount" value={`${fields.depositAmount} SOL`} error={errors.depositAmount} />
         <TransactionReceiptItem title="Min Price" value={fields.minPrice} error={errors.minPrice} />
         <TransactionReceiptItem title="Max Price" value={fields.maxPrice} error={errors.maxPrice} />
       </Box>

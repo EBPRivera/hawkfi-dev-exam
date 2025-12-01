@@ -65,7 +65,7 @@ export const sendTransaction = (fields: ISnipeFields): ITransactionResponse => {
     if (fields.depositAmount > Number(fields.walletBalance)) {
       transactionErrors.push({
         field: "depositAmount",
-        message: "You have insufficient balance"
+        message: `Insufficient balance. You have ${Number(fields.walletBalance)} SOL in your wallet`
       })
     }
 

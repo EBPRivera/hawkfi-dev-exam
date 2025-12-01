@@ -66,13 +66,12 @@ export default function PositionForm(
           value={depositAmount}
           initialValue={depositAmount}
           onChange={(value: number) => updateField("depositAmount", value)}
-          label="Deposit Amount"
+          label="Deposit Amount (SOL)"
           error={errors.depositAmount ? true : false}
-          helperText={errors.depositAmount}
         />
         {Number(depositAmount) > Number(balance) && (
-          <Typography variant="caption">
-            You have insufficient balance
+          <Typography variant="caption" color="error">
+            Insufficient balance. You only have {Number(balance)} SOL in your wallet.
           </Typography>
         )}
       </Stack>
