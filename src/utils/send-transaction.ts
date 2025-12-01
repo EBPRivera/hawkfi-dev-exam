@@ -33,8 +33,8 @@ export interface ITransactionError {
 export class TransactionError extends Error {
   fieldErrors: ITransactionError[];
 
-  constructor(fieldErrors: ITransactionError[], ...params: any[]) {
-    super(...params)
+  constructor(fieldErrors: ITransactionError[]) {
+    super()
     this.fieldErrors = fieldErrors
   }
 }
@@ -65,7 +65,7 @@ export const sendTransaction = (fields: ISnipeFields): ITransactionResponse => {
     if (fields.depositAmount > Number(fields.walletBalance)) {
       transactionErrors.push({
         field: "depositAmount",
-        message: `Insufficient balance. You have ${Number(fields.walletBalance)} SOL in your wallet`
+        message: `Insufficient balance. You only have ${Number(fields.walletBalance)} SOL in your wallet`
       })
     }
 
@@ -83,7 +83,7 @@ export const sendTransaction = (fields: ISnipeFields): ITransactionResponse => {
       positionAddress,
     }
   } catch (error) {
-    var transactionErrors: ITransactionError[] = []
+    let transactionErrors: ITransactionError[] = []
 
     if (error instanceof ZodError) {
       error.issues.map((issue) => {

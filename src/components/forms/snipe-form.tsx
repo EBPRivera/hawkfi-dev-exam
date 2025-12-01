@@ -1,5 +1,4 @@
 import { useState, use } from "react"
-import { useWallet } from "@jup-ag/wallet-adapter"
 import { Alert, Box, Button, CircularProgress, Snackbar, Stack } from "@mui/material"
 import PoolForm from "./pool-form"
 import PositionForm from "./position-form"
@@ -130,7 +129,7 @@ export default function SnipeForm(
       } catch (error) {
         const transactionErrors = (error as TransactionError).fieldErrors
         setFieldErrors((prevState) => {
-          var fieldErrors = {}
+          let fieldErrors = {}
           transactionErrors.map(({ field, message }) => {
             fieldErrors = {
               ...fieldErrors,

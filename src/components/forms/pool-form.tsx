@@ -1,4 +1,3 @@
-import { useMemo } from "react"
 import { BASE_FEE_OPTIONS, BIN_STEP_OPTIONS, MOCK_TOKENS } from "@/lib/constants"
 import { Autocomplete, Chip, Stack, TextField, Typography } from "@mui/material"
 import { SOL_SYMBOL, USDC_SYMBOL, ISnipeFields, IFieldErrors } from "./snipe-form"
@@ -9,7 +8,7 @@ import { IAutocompleteOptions } from "@/lib/interfaces"
 
 export default function PoolForm(
 	{ onChange, fields, initialPrices, errors }:
-	{ onChange: Function, fields: ISnipeFields, initialPrices: { [x: string]: IPriceAPIResponse }, errors: IFieldErrors }
+	{ onChange: (fields: ISnipeFields) => void, fields: ISnipeFields, initialPrices: { [x: string]: IPriceAPIResponse }, errors: IFieldErrors }
 ): React.ReactElement {
 	const { address, baseFee, binStep, symbol, price } = fields
 
@@ -105,7 +104,7 @@ export default function PoolForm(
 			<NumberInput
 				value={price}
 				initialValue={price}
-				onChange={(value: number) => updateField("price", value)}
+				onChange={(value) => updateField("price", value)}
 				label="Price"
 				error={errors.price ? true : false}
 				helperText={errors.price}
