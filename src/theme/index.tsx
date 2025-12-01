@@ -7,6 +7,7 @@ import { ReactNode } from "react";
 // TODO: Add palette and typography here as necessary
 import breakpoints from "@/theme/breakpoints";
 import shadows from "@/theme/shadows";
+import textFieldTheme from "./textfield";
 
 // @mui
 import { CssBaseline } from "@mui/material";
@@ -21,6 +22,12 @@ export const getTheme = () => {
   const themeOptions: ThemeOptions = {
     breakpoints: breakpoints,
     shadows: shadows,
+    palette: {
+      action: {
+        disabledBackground: "#46E1EB",
+        disabled: "#06220D"
+      }
+    },
     components: {
       MuiButtonBase: {
         defaultProps: {
@@ -33,6 +40,16 @@ export const getTheme = () => {
           disableElevation: true,
         },
       },
+      MuiTextField: {
+        styleOverrides: textFieldTheme
+      },
+      MuiChip: {
+        styleOverrides: {
+          root: {
+            color: "#c4cac8ff"
+          }
+        }
+      }
     },
   };
 
