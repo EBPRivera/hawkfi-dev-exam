@@ -85,7 +85,7 @@ export default function Home() {
                 mb: 3,
               }}
             >
-              Let the exam begin. Good luck!
+              HawkfFi Dev Exam
             </Typography>
 
             <Typography
@@ -95,9 +95,7 @@ export default function Home() {
                 mb: 4,
               }}
             >
-              {connected
-                ? "Wallet connected! You're ready to start building on Solana."
-                : "Connect your wallet to get started with the Solana development exam."}
+              Connect your wallet to begin filling up the form
             </Typography>
 
             {!connected && (
