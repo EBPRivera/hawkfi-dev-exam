@@ -13,11 +13,12 @@ export default function TransactionReceiptModal(
       open={open}
       aria-labelledby="modal-transaction-receipt"
       aria-describedby="transaction-receipt"
+      onClose={onClose}
     >
       <Box
         flexDirection="column"
         sx={{
-          position: 'absolute' as 'absolute',
+          position: 'absolute',
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
