@@ -87,10 +87,10 @@ export default function SnipeForm(
     }))
   }
 
-  function updateByPreset(preset: IPreset) {
+  function updateByPreset(preset: IPreset | null) {
     if (typeof preset == "undefined") return
 
-    const { lowerPercentage, upperPercentage } = preset
+    const { lowerPercentage, upperPercentage } = preset as IPreset
     setPriceRange(lowerPercentage, upperPercentage, preset)
   }
 

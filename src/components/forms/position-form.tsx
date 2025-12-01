@@ -17,8 +17,8 @@ export default function PositionForm(
   {
     onChange: (fields: ISnipeFields) => void,
     fields: ISnipeFields,
-    onPresetSelect: Function,
-    onResetPriceRange: Function,
+    onPresetSelect: (preset: IPreset | null) => void,
+    onResetPriceRange: () => void,
     errors: IFieldErrors,
     balance: number | undefined
   }
