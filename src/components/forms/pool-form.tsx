@@ -4,7 +4,7 @@ import { Autocomplete, Chip, Stack, TextField, Typography } from "@mui/material"
 import { SOL_SYMBOL, USDC_SYMBOL, ISnipeFields, IFieldErrors } from "./snipe-form"
 import NumberInput from "@/components/input/number-input"
 import AutocompleteRenderField from "@/components/input/autocomplete-render"
-import { IPriceAPIResponse } from "@/utils/price"
+import { IPriceAPIResponse, calculatePriceRange } from "@/utils/price"
 import { IAutocompleteOptions } from "@/lib/interfaces"
 
 export default function PoolForm(
@@ -25,11 +25,15 @@ export default function PoolForm(
 
 	async function updateSymbol(value: string) {
 		const token = MOCK_TOKENS.find(({ symbol }) => symbol == value)
+		const price = initialPrices[token?.address || ""].usdPrice
+		const [minPrice, maxPrice] = calculatePriceRange(price, 10, 10)
 
 		const updatedFields = {
 			...fields,
 			symbol: value,
-			price: initialPrices[token?.address || ""].usdPrice
+			price,
+			minPrice,
+			maxPrice
 		}
 
 		onChange(updatedFields)
