@@ -3,8 +3,24 @@ import { TextField, Stack, Button } from "@mui/material";
 import { isNumber } from "@/utils/number-utils";
 
 export default function NumberInput(
-  { onChange, initialValue, value, disabled = false, ...props }:
-  { onChange: Function, initialValue: number, value: string | number, disabled?: boolean, [x: string]: any }
+  { 
+    onChange,
+    initialValue,
+    value,
+    disabled = false,
+    label,
+    error,
+    helperText
+  }:
+  {
+    onChange: (value: string | number) => void,
+    initialValue: number,
+    value: string | number,
+    disabled?: boolean,
+    label: string,
+    error: boolean,
+    helperText?: string | undefined
+  }
 ): React.ReactElement {
   const currentInputRef = useRef<number>(initialValue && 0.0)
   const previousInputRef = useRef<number>(initialValue && 0.0)
@@ -32,7 +48,14 @@ export default function NumberInput(
   return (
     <Stack direction="row">
       <Button variant="contained" color="error" onClick={() => incrementInput(-1)} disabled={disabled}>-</Button>
-      <TextField {...props} value={value} onChange={(e) => setNumberInput(e.target.value)} onBlur={validateInput} disabled={disabled} />
+      <TextField
+        value={value}
+        onChange={(e) => setNumberInput(e.target.value)} onBlur={validateInput}
+        disabled={disabled}
+        label={label}
+        error={error}
+        helperText={helperText}
+      />
       <Button variant="contained" color="success" onClick={() => incrementInput(1)} disabled={disabled}>+</Button>
     </Stack>
   )

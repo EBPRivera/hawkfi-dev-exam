@@ -1,5 +1,5 @@
 import { TextField } from "@mui/material"
 
-export default function AutocompleteRenderField({ ...props }: { [x: string]: any }): React.ReactElement {
+export default function AutocompleteRenderField({ ...props }): React.ReactElement {
   return <TextField {...props} />
 }

@@ -1,11 +1,9 @@
-import { useState } from "react"
 import { Autocomplete, Button, Chip, Stack, Typography } from "@mui/material"
 import { POSITION_PRESETS } from "@/lib/constants"
 import { ISnipeFields, IPreset, IFieldErrors } from "./snipe-form"
 import AutocompleteRenderField from "@/components/input/autocomplete-render"
 import NumberInput from "@/components/input/number-input"
 import { getBinCountBetweenMinAndMaxPrice } from "@/utils/dlmm"
-import { IBalanceResponse } from "@/utils/wallet"
 
 export default function PositionForm(
   {
@@ -16,14 +14,14 @@ export default function PositionForm(
     errors,
     balance
   }:
-    {
-      onChange: Function,
-      fields: ISnipeFields,
-      onPresetSelect: Function,
-      onResetPriceRange: Function,
-      errors: IFieldErrors,
-      balance: number | undefined
-    }
+  {
+    onChange: (fields: ISnipeFields) => void,
+    fields: ISnipeFields,
+    onPresetSelect: Function,
+    onResetPriceRange: Function,
+    errors: IFieldErrors,
+    balance: number | undefined
+  }
 ): React.ReactElement {
   const { binStep, preset, minPrice, maxPrice, depositAmount } = fields
 
@@ -65,9 +63,9 @@ export default function PositionForm(
         <NumberInput
           value={depositAmount}
           initialValue={depositAmount}
-          onChange={(value: number) => updateField("depositAmount", value)}
-          label="Deposit Amount (SOL)"
+          onChange={(value) => updateField("depositAmount", value)}
           error={errors.depositAmount ? true : false}
+          label="Deposit Amount (SOL)"
         />
         {Number(depositAmount) > Number(balance) && (
           <Typography variant="caption" color="error">
@@ -86,7 +84,7 @@ export default function PositionForm(
         <NumberInput
           value={minPrice}
           initialValue={minPrice}
-          onChange={(value: number) => updateField("minPrice", value)}
+          onChange={(value) => updateField("minPrice", value)}
           label="Min Price"
           error={errors.minPrice ? true : false}
           helperText={errors.minPrice}
@@ -94,7 +92,7 @@ export default function PositionForm(
         <NumberInput
           value={maxPrice}
           initialValue={minPrice}
-          onChange={(value: number) => updateField("maxPrice", value)}
+          onChange={(value) => updateField("maxPrice", value)}
           label="Max Price"
           error={errors.maxPrice ? true : false}
           helperText={errors.maxPrice}
